@@ -3,6 +3,8 @@ package Usuarios;
 import enums.CargoFuncionario;
 
 public class Presidente extends Funcionario {
+	
+	double ValorTotalCapital = 0;
 
 	public Presidente(String cpf, String senha, String nome) {
 		super(cpf, senha, nome);
@@ -14,6 +16,8 @@ public class Presidente extends Funcionario {
 
 	public static CargoFuncionario getCargopresidente() {
 		return cargoPresidente;
+	
+
 	}
 
 }
