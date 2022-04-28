@@ -1,6 +1,7 @@
 package dominio;
 
 import contas.*;
+import enums.*;
 
 import java.util.Scanner;
 
@@ -15,7 +16,7 @@ public class Menu {
 	public void menu1() {
 		System.out.println("Insira seu cpf");
 		login = ler.nextLine();
-
+		
 	}
 
 	public void menu2() {

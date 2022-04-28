@@ -16,29 +16,18 @@ public enum Contas {
 			this.saldo = saldo;
 			this.nome = nome;
 		}
-
+	
 		public String getCpf() {
 			return cpf;
 		}
 
-		protected void setCpf(String cpf) {
-			this.cpf = cpf;
-		}
-
-		protected double getSaldo() {
+		public double getSaldo() {
 			return saldo;
 		}
-
-		protected void setSaldo(double saldo) {
-			this.saldo = saldo;
-		}
 		
-		protected String getNome() {
+		public String getNome() {
 			return nome;
 		}
 
-		protected void setNome(String nome) {
-			this.nome = nome;
-		}
 }
 
