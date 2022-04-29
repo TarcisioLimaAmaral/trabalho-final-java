@@ -10,13 +10,14 @@ public enum Contas {
 		private String cpf;
 		private double saldo;
 		private String nome;
+		public String login = cpf;
 		
 		Contas(String cpf, double saldo, String nome) {
 			this.cpf = cpf;
 			this.saldo = saldo;
 			this.nome = nome;
 		}
-	
+		
 		public String getCpf() {
 			return cpf;
 		}
