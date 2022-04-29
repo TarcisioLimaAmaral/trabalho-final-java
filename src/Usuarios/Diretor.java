@@ -14,5 +14,6 @@ public class Diretor extends Funcionario {
 
 	public static CargoFuncionario getCargodiretor() {
 		return cargoDiretor;
+
 	}
 }
