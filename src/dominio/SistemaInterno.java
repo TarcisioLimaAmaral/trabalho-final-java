@@ -1,22 +1,33 @@
 package dominio;
 
+import java.io.IOException;
 import java.util.Scanner;
 
+import Exceptions.ContaInexistenteExc;
+import Exceptions.DocumentoInvalidoExc;
 import contas.*;
 
 import enums.*;
+import menus.*;
 
-public class SistemaInterno {
+public class SistemaInterno  {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException, ContaInexistenteExc, DocumentoInvalidoExc {
 
 		int tipo = 0;
 
-		Menu m = new Menu();
+		MenuPrincipal m = new MenuPrincipal();
+		MenuContas mc = new MenuContas();
+		MenuGerente mg = new MenuGerente();
+		MenuDiretor md = new MenuDiretor();
+		MenuPresidente mp = new MenuPresidente();
+		
 		Scanner ler = new Scanner(System.in);
 
 		m.menu1();
-
+		
+		System.out.println("");
+		
 		do {
 			System.out.println("Selecione a sua conta \n1 - Poupanca \n2 - Corrente");
 			tipo = ler.nextInt();
@@ -36,18 +47,16 @@ public class SistemaInterno {
 				tipo = 0;
 			}
 		} while (tipo == 0);
-
-		System.out.println("");
-
+		
 		if (tipo == 1) {
 			do {
-				m.menuPoupanca();
+				mc.menuPoupanca();
 				m.DesejaContinuar();
 			} while (true);
 
 		} else if (tipo == 2) {
 			do {
-				m.menuCorrente();
+				mc.menuCorrente();
 				m.DesejaContinuar();
 			} while (true);
 

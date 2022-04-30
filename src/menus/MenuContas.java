@@ -1,37 +1,41 @@
-package dominio;
+package menus;
 
-import contas.*;
-import enums.*;
-
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Menu {
+public class MenuContas {
 
 	protected int tipo, opcao, continuar, tempo;
 	protected double saldo, saldoT, valor, Imposto, ImpostoSaque = 0.10, ImpostoDeposito = 0.10,
 			ImpostoTransferencia = 0.20;
-	protected String login1, cpfT;
-	public Contas m;
+	protected String login, cpfT;
 
 	Scanner ler = new Scanner(System.in);
 
-	public void menu1() {
-
-		System.out.println("Insira seu cpf: ");
-		String cpf = ler.nextLine();
-
-	}
-
-	public void menuCorrente() {
+	public void menuCorrente() throws InputMismatchException {
 		do {
 			System.out.println(
 					"Selecione uma opcao abaixo: \n1-Depositar \n2-Sacar \n3-Saldo \n4-Transferir \n5-Exibir Impostos");
-			opcao = ler.nextInt();
+			try {
+				opcao = ler.nextInt();
+			} catch (InputMismatchException e) {
+				System.out.println("\nApenas números são necessários!");
+				continue;
+			} finally {
+				ler.nextInt();
+			}
 			switch (opcao) {
 
 			case 1:
 				System.out.println("Quanto deseja depositar?");
-				valor = ler.nextDouble();
+				try {
+					valor = ler.nextDouble();
+				} catch (InputMismatchException e) {
+					System.out.println("\nApenas números são necessários!");
+					continue;
+				} finally {
+					ler.nextDouble();
+				}
 				Imposto = Imposto + ImpostoDeposito;
 				saldo = saldo - ImpostoDeposito;
 				Math.ceil(saldo = saldo + valor);
@@ -39,7 +43,14 @@ public class Menu {
 				break;
 			case 2:
 				System.out.println("Quanto deseja sacar?");
-				valor = ler.nextDouble();
+				try {
+					valor = ler.nextDouble();
+				} catch (InputMismatchException e) {
+					System.out.println("\nApenas números são necessários!");
+					continue;
+				} finally {
+					ler.nextDouble();
+				}
 				if (valor > saldo) {
 					System.out.println("Saldo Insuficiente\n" + saldo);
 					break;
@@ -57,7 +68,14 @@ public class Menu {
 					System.out.println("Insira o cpf de quem deseja transferir");
 					cpfT = ler.next();
 					System.out.println("Insira o valor");
-					valor = ler.nextDouble();
+					try {
+						valor = ler.nextDouble();
+					} catch (InputMismatchException e) {
+						System.out.println("\nApenas números são necessários!");
+						continue;
+					} finally {
+						ler.nextDouble();
+					}
 					if (valor > saldo) {
 						System.out.println("Saldo Insuficiente\n" + saldo);
 						break;
@@ -98,18 +116,39 @@ public class Menu {
 		do {
 			System.out.println(
 					"Selecione uma opcao abaixo: \n1-Depositar \n2-Sacar \n3-Saldo \n4-Transferir \n5-Simular Rendimento");
-			opcao = ler.nextInt();
+			try {
+				opcao = ler.nextInt();
+			} catch (InputMismatchException e) {
+				System.out.println("\nApenas números são necessários!");
+				continue;
+			} finally {
+				ler.nextInt();
+			}
 			switch (opcao) {
 
 			case 1:
 				System.out.println("Quanto deseja depositar?");
-				valor = ler.nextDouble();
+				try {
+					valor = ler.nextDouble();
+				} catch (InputMismatchException e) {
+					System.out.println("\nApenas números são necessários!");
+					continue;
+				} finally {
+					ler.nextDouble();
+				}
 				Math.ceil(saldo = saldo + valor);
 				System.out.println("Saldo atual: " + saldo);
 				break;
 			case 2:
 				System.out.println("Quanto deseja sacar?");
-				valor = ler.nextDouble();
+				try {
+					valor = ler.nextDouble();
+				} catch (InputMismatchException e) {
+					System.out.println("\nApenas números são necessários!");
+					continue;
+				} finally {
+					ler.nextDouble();
+				}
 				if (valor > saldo) {
 					System.out.println("Saldo Insuficiente\n" + saldo);
 					break;
@@ -125,7 +164,14 @@ public class Menu {
 					System.out.println("Insira o cpf de quem deseja transferir");
 					cpfT = ler.next();
 					System.out.println("Insira o valor");
-					valor = ler.nextDouble();
+					try {
+						valor = ler.nextDouble();
+					} catch (InputMismatchException e) {
+						System.out.println("\nApenas números são necessários!");
+						continue;
+					} finally {
+						ler.nextLine();
+					}
 					if (valor > saldo) {
 						System.out.println("Saldo Insuficiente\n" + saldo);
 						break;
@@ -151,7 +197,14 @@ public class Menu {
 				break;
 			case 5:
 				System.out.println("Insira o tempo em meses");
+				try {
 				tempo = ler.nextInt();
+				} catch (InputMismatchException e) {
+					System.out.println("\nApenas números são necessários!");
+					continue;
+				} finally {
+					ler.nextInt();
+				}
 				saldo = valor;
 				for (int i = 0; i < tempo; i++) {
 					valor = valor + (valor * 0.01);
@@ -163,21 +216,5 @@ public class Menu {
 				opcao = 0;
 			}
 		} while (opcao == 0);
-	}
-
-	public void DesejaContinuar() {
-		do {
-			System.out.println("Deseja realizar outra operacao? \n1- SIM \n2- SAIR");
-			continuar = ler.nextInt();
-
-			if (continuar == 1) {
-				break;
-			} else if (continuar == 2) {
-				System.exit(0);
-			} else if (continuar != 2) {
-				System.out.println("Selecione uma opcao valida");
-				continuar = 1;
-			}
-		} while (continuar == 1);
 	}
 }

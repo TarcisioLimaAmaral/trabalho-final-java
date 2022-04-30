@@ -13,7 +13,15 @@ public enum Contas {
 		this.cpf = cpf;
 		this.saldo = saldo;
 		this.nome = nome;
+	}
 
+	public static Contas getContaPorCpf(String cpfInserido) {
+		for (Contas contaAtual : Contas.values()) {
+			if (contaAtual.getCpf().equals(cpfInserido)) {
+				return contaAtual;
+			}
+		}
+		return null;
 	}
 
 	protected double getSaldo() {
