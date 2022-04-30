@@ -1,0 +1,4 @@
+cliente/corrente/111.111.111-11/senha111/Lucas/0001/1000
+gerente/poupanca/222.222.222-22/senha222/Luiz/0002/2000
+diretor/correntePoupanca/333.333.333-33/senha333/Tarcisio/0003/3000
+presidente/corrente/444.444.444-44/senha444/Deusedir/0004/4000

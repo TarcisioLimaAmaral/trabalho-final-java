@@ -2,7 +2,7 @@ package menus;
 
 import java.util.Scanner;
 
-import enums.Contas;
+import repositorios.UsuarioRepositorio;
 
 public class MenuPrincipal {
 	protected int tipo, opcao, continuar, tempo;
@@ -16,7 +16,7 @@ public class MenuPrincipal {
 		System.out.println("Insira seu cpf");
 		login = ler.nextLine();
 		
-		System.out.println("Bem-vindo " + Contas.getContaPorCpf(login).getNome());
+		System.out.println("Bem-vindo " + UsuarioRepositorio.exibirUser(login).getNome());
 	}
 	
 	

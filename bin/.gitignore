@@ -1,6 +1,5 @@
-/Usuarios/
 /contas/
 /dominio/
-/enums/
-/interfaces/
-/Menus/
+/menus/
+/repositorios/
+/usuarios/

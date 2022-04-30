@@ -4,8 +4,8 @@ import java.util.Scanner;
 
 import contas.*;
 
-import enums.*;
 import menus.*;
+import repositorios.UsuarioRepositorio;
 
 public class SistemaInterno {
 
@@ -19,9 +19,15 @@ public class SistemaInterno {
 		MenuDiretor md = new MenuDiretor();
 		MenuPresidente mp = new MenuPresidente();
 		
+		UsuarioRepositorio ur = new UsuarioRepositorio();
+		
 		Scanner ler = new Scanner(System.in);
+		
+		ur.lerUser();
+		
+//		ur.relatorio();
 
-		//m.menu1();
+		m.menu1();
 		
 		System.out.println("");
 

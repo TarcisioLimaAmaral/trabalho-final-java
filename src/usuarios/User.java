@@ -5,12 +5,14 @@ public abstract class User {
 	protected String cpf;
 	protected String senha;
 	protected String nome;
+	protected int agencia;
 
-	public User(String cpf, String senha, String nome) {
+	public User(String cpf, String senha, String nome, int agencia) {
 
 		this.cpf = cpf;
 		this.senha = senha;
 		this.nome = nome;
+		this.agencia = agencia;
 
 	}
 
@@ -29,6 +31,10 @@ public abstract class User {
 
 	public String getNome() {
 		return nome;
+	}
+	
+	public int getAgencia() {
+		return agencia;
 	}
 
 }
