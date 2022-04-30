@@ -12,32 +12,14 @@ public class Menu {
 			ImpostoTransferencia = 0.20;
 	protected String login1, cpfT;
 	public Contas m;
-	public String cpf;
 
 	Scanner ler = new Scanner(System.in);
 
 	public void menu1() {
-		Contas vetor[] = Contas.values();
-		for (Contas c : vetor) {
-			System.out.println("Insira seu cpf: ");
-			cpf = ler.nextLine();
 
-			if (cpf == "111.111.111-11") {
-				System.out.println("Bem-Vindo, " + c.PuxarCpf(vetor[0]));
-			} else if (cpf == "222.222.222-22") {
-				System.out.println("Bem-Vindo, " + c.PuxarCpf(vetor[1]));
-			} else if (cpf == "333.333.333-33") {
-				System.out.println("Bem-Vindo, " + c.PuxarCpf(vetor[2]));
-			} else if (cpf == "444.444.444-44") {
-				System.out.println("Bem-Vindo, " + c.PuxarCpf(vetor[3]));
-			} else if (cpf == "555.555.555-55") {
-				System.out.println("Bem-Vindo, " + c.PuxarCpf(vetor[4]));
-			} else {
-				return;
+		System.out.println("Insira seu cpf: ");
+		String cpf = ler.nextLine();
 
-			}
-			break;
-		}
 	}
 
 	public void menuCorrente() {

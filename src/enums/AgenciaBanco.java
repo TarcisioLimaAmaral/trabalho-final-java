@@ -2,7 +2,7 @@ package enums;
 
 public enum AgenciaBanco {
 
-	BEZ5499(1), NER2237(2), HWC7285(3), IAC3661(4),LUO0481(5);
+	AAA011(1), BB012(2), CC013(3), DD014(4), EE015(5);
 
 	private final int idAgencia;
 
@@ -15,15 +15,14 @@ public enum AgenciaBanco {
 	}
 
 	public static AgenciaBanco AgenciaPorId(int idAgenciaBancos) {
-		
+
 		for (AgenciaBanco agencia : AgenciaBanco.values()) {
-			
+
 			if (idAgenciaBancos == agencia.idAgencia) {
 				return agencia;
 			}
 		}
-		return BEZ5499;
-		
-		
+		return AAA011;
+
 	}
 }
