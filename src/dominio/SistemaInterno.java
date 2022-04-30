@@ -15,7 +15,7 @@ public class SistemaInterno {
 		Menu m = new Menu();
 		Scanner ler = new Scanner(System.in);
 
-//		m.menu1();
+		m.menu1();
 
 		do {
 			System.out.println("Selecione a sua conta \n1 - Poupanca \n2 - Corrente");

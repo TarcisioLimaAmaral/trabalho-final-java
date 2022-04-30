@@ -1,7 +1,6 @@
 package dominio;
 
 import contas.*;
-
 import enums.*;
 
 import java.util.Scanner;
@@ -12,15 +11,33 @@ public class Menu {
 	protected double saldo, saldoT, valor, Imposto, ImpostoSaque = 0.10, ImpostoDeposito = 0.10,
 			ImpostoTransferencia = 0.20;
 	protected String login1, cpfT;
-	public Contas login;
+	public Contas m;
+	public String cpf;
 
 	Scanner ler = new Scanner(System.in);
 
 	public void menu1() {
-		System.out.println("Insira seu cpf");
-		login1 = ler.nextLine();
+		Contas vetor[] = Contas.values();
+		for (Contas c : vetor) {
+			System.out.println("Insira seu cpf: ");
+			cpf = ler.nextLine();
 
-		System.out.println("Bem-vindo " + Contas.values());
+			if (cpf == "111.111.111-11") {
+				System.out.println("Bem-Vindo, " + c.PuxarCpf(vetor[0]));
+			} else if (cpf == "222.222.222-22") {
+				System.out.println("Bem-Vindo, " + c.PuxarCpf(vetor[1]));
+			} else if (cpf == "333.333.333-33") {
+				System.out.println("Bem-Vindo, " + c.PuxarCpf(vetor[2]));
+			} else if (cpf == "444.444.444-44") {
+				System.out.println("Bem-Vindo, " + c.PuxarCpf(vetor[3]));
+			} else if (cpf == "555.555.555-55") {
+				System.out.println("Bem-Vindo, " + c.PuxarCpf(vetor[4]));
+			} else {
+				return;
+
+			}
+			break;
+		}
 	}
 
 	public void menuCorrente() {
@@ -155,7 +172,7 @@ public class Menu {
 				tempo = ler.nextInt();
 				saldo = valor;
 				for (int i = 0; i < tempo; i++) {
-					valor = valor + (valor*0.01);
+					valor = valor + (valor * 0.01);
 				}
 				System.out.println(Math.ceil(valor));
 				break;
