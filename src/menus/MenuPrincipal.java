@@ -27,7 +27,7 @@ public class MenuPrincipal {
 				}
 			} finally {
 				ler.nextLine();
-				System.out.println("Bem-vindo");
+				System.out.println("Bem-vindo ");
 
 			}
 			return null;
