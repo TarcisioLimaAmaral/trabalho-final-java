@@ -1,0 +1,8 @@
+Quantidade de Depositos: 1
+Quantidade de Saques: 2
+Quantidade de Transferencias: 0
+---------------------------------
+Quantidade de Depositos: 1
+Quantidade de Saques: 0
+Quantidade de Transferencias: 0
+---------------------------------
