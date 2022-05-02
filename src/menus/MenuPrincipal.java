@@ -3,57 +3,79 @@ package menus;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import Exceptions.ContaInexistenteExc;
-import Exceptions.DocumentoInvalidoExc;
-import Usuarios.User;
+import repositorios.UsuarioRepositorio;
 
 public class MenuPrincipal {
-	protected int tipo, opcao, continuar, tempo;
+	protected static int tipo, opcao, continuar, tempo;
 	protected double saldo, saldoT, valor, Imposto, ImpostoSaque = 0.10, ImpostoDeposito = 0.10,
 			ImpostoTransferencia = 0.20;
-	protected String login, cpfT;
+	protected String login, cpfT, senha;
 
 	Scanner ler = new Scanner(System.in);
 
+	UsuarioRepositorio ur = new UsuarioRepositorio();
 
-		public User menu1() throws DocumentoInvalidoExc, ContaInexistenteExc {
-			try {
-				System.out.println("Insira seu cpf");
+	public void menu1() {
+		System.out.println("Insira seu cpf:");
+		login = ler.nextLine();
+		System.out.println("Insira sua senha:");
+		senha = ler.nextLine();
 
-				login = ler.nextLine();
-				User usuario = User.retornaUsuario(login);
-				if (usuario.getSenha().equals(login)) {
-					return usuario;
-				}
-			} finally {
-				ler.nextLine();
-				System.out.println("Bem-vindo ");
+		System.out.println("\nBem-vindo, " + ur.exibirUser(login).getNome());
+		System.out.println("Seu saldo é de R$: " + ur.exibirUser(login).getSaldo() + ",00");
 
-			}
-			return null;
-		}
-
-		public void DesejaContinuar() throws InputMismatchException {
-
-			do {
-				System.out.println("Deseja realizar outra operacao? \n1- SIM \n2- SAIR");
-				try {
-					continuar = ler.nextInt();
-				} catch (InputMismatchException e) {
-					System.out.println("\nApenas números são necessários!");
-					continue;
-				} finally {
-					ler.nextInt();
-				}
-				if (continuar == 1) {
-					break;
-				} else if (continuar == 2) {
-					System.exit(0);
-				} else if (continuar != 2) {
-					System.out.println("Selecione uma opcao valida");
-					continuar = 1;
-				}
-			} while (continuar == 1);
-		}
 	}
 
+	public void DesejaContinuar() {
+		do {
+			System.out.println("Deseja realizar outra operacao? \n1- SIM \n2- SAIR");
+			try {
+				continuar = ler.nextInt();
+			} catch (InputMismatchException ex) {
+				System.out.println("Apenas números são permitidos!");
+			} finally {
+				ler.nextInt();
+			}
+			if (continuar == 1) {
+				break;
+			} else if (continuar == 2) {
+				UsuarioRepositorio.relatorio();
+				System.exit(0);
+			} else if (continuar != 2) {
+				System.out.println("Selecione uma opcao valida");
+				continuar = 1;
+			}
+		} while (continuar == 1);
+	}
+
+	public void tipoConta() throws InputMismatchException {
+		do {
+			System.out.println("Selecione a sua conta \n1 - Poupanca \n2 - Corrente");
+			try {
+				tipo = ler.nextInt();
+			} catch (InputMismatchException ex) {
+				System.out.println("Apenas números são permitidos!");
+			} finally {
+				ler.nextInt();
+			}
+			switch (tipo) {
+
+			case 1:
+				System.out.println("Conta Poupanca Selecionada");
+				tipo = 1;
+				break;
+			case 2:
+				System.out.println("Conta Corrente Selecionada");
+				tipo = 2;
+				break;
+			default:
+				System.out.println("Selecione 1 ou 2");
+				tipo = 0;
+			}
+		} while (tipo == 0);
+	}
+
+	public int getTipo() {
+		return tipo;
+	}
+}

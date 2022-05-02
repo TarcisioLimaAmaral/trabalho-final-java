@@ -3,24 +3,26 @@ package menus;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import repositorios.UsuarioRepositorio;
+
 public class MenuContas {
 
 	protected int tipo, opcao, continuar, tempo;
+	public static int dep = 0, saq = 0, trans = 0;
 	protected double saldo, saldoT, valor, Imposto, ImpostoSaque = 0.10, ImpostoDeposito = 0.10,
 			ImpostoTransferencia = 0.20;
 	protected String login, cpfT;
 
 	Scanner ler = new Scanner(System.in);
 
-	public void menuCorrente() throws InputMismatchException {
+	public void menuCorrente() {
 		do {
 			System.out.println(
 					"Selecione uma opcao abaixo: \n1-Depositar \n2-Sacar \n3-Saldo \n4-Transferir \n5-Exibir Impostos");
 			try {
 				opcao = ler.nextInt();
-			} catch (InputMismatchException e) {
-				System.out.println("\nApenas números são necessários!");
-				continue;
+			} catch (InputMismatchException ex) {
+				System.out.println("Apenas números são permitidos!");
 			} finally {
 				ler.nextInt();
 			}
@@ -30,24 +32,23 @@ public class MenuContas {
 				System.out.println("Quanto deseja depositar?");
 				try {
 					valor = ler.nextDouble();
-				} catch (InputMismatchException e) {
-					System.out.println("\nApenas números são necessários!");
-					continue;
+				} catch (InputMismatchException ex) {
+					System.out.println("Apenas números são permitidos!");
 				} finally {
 					ler.nextDouble();
 				}
 				Imposto = Imposto + ImpostoDeposito;
 				saldo = saldo - ImpostoDeposito;
 				Math.ceil(saldo = saldo + valor);
+				dep = dep + 1;
 				System.out.println("Saldo atual: " + saldo);
 				break;
 			case 2:
 				System.out.println("Quanto deseja sacar?");
 				try {
 					valor = ler.nextDouble();
-				} catch (InputMismatchException e) {
-					System.out.println("\nApenas números são necessários!");
-					continue;
+				} catch (InputMismatchException ex) {
+					System.out.println("Apenas números são permitidos!");
 				} finally {
 					ler.nextDouble();
 				}
@@ -58,6 +59,7 @@ public class MenuContas {
 				Imposto = Imposto + ImpostoSaque;
 				Math.ceil(saldo = saldo - ImpostoSaque);
 				saldo = saldo - valor;
+				saq = saq + 1;
 				System.out.println("Saldo atual: " + saldo);
 				break;
 			case 3:
@@ -70,9 +72,8 @@ public class MenuContas {
 					System.out.println("Insira o valor");
 					try {
 						valor = ler.nextDouble();
-					} catch (InputMismatchException e) {
-						System.out.println("\nApenas números são necessários!");
-						continue;
+					} catch (InputMismatchException ex) {
+						System.out.println("Apenas números são permitidos!");
 					} finally {
 						ler.nextDouble();
 					}
@@ -81,7 +82,13 @@ public class MenuContas {
 						break;
 					} else {
 						System.out.println(cpfT + "\nDeseja confirmar transferencia? \n1-SIM \n2-NAO");
-						continuar = ler.nextInt();
+						try {
+							continuar = ler.nextInt();
+						} catch (InputMismatchException ex) {
+							System.out.println("Apenas números são permitidos!");
+						} finally {
+							ler.nextInt();
+						}
 						switch (continuar) {
 						case 1:
 
@@ -100,6 +107,7 @@ public class MenuContas {
 					System.out.println("Transferencia realizada \n" + saldo);
 					break;
 				} while (continuar == 2);
+				trans = trans + 1;
 				break;
 			case 5:
 				System.out.println(Math.ceil(Imposto));
@@ -118,9 +126,8 @@ public class MenuContas {
 					"Selecione uma opcao abaixo: \n1-Depositar \n2-Sacar \n3-Saldo \n4-Transferir \n5-Simular Rendimento");
 			try {
 				opcao = ler.nextInt();
-			} catch (InputMismatchException e) {
-				System.out.println("\nApenas números são necessários!");
-				continue;
+			} catch (InputMismatchException ex) {
+				System.out.println("Apenas números são permitidos!");
 			} finally {
 				ler.nextInt();
 			}
@@ -130,22 +137,21 @@ public class MenuContas {
 				System.out.println("Quanto deseja depositar?");
 				try {
 					valor = ler.nextDouble();
-				} catch (InputMismatchException e) {
-					System.out.println("\nApenas números são necessários!");
-					continue;
+				} catch (InputMismatchException ex) {
+					System.out.println("Apenas números são permitidos!");
 				} finally {
 					ler.nextDouble();
 				}
 				Math.ceil(saldo = saldo + valor);
 				System.out.println("Saldo atual: " + saldo);
+				dep = dep + 1;
 				break;
 			case 2:
 				System.out.println("Quanto deseja sacar?");
 				try {
 					valor = ler.nextDouble();
-				} catch (InputMismatchException e) {
-					System.out.println("\nApenas números são necessários!");
-					continue;
+				} catch (InputMismatchException ex) {
+					System.out.println("Apenas números são permitidos!");
 				} finally {
 					ler.nextDouble();
 				}
@@ -155,6 +161,7 @@ public class MenuContas {
 				}
 				saldo = saldo - valor;
 				System.out.println("Saldo atual: " + saldo);
+				saq = saq + 1;
 				break;
 			case 3:
 				System.out.println(saldo);
@@ -163,21 +170,28 @@ public class MenuContas {
 				do {
 					System.out.println("Insira o cpf de quem deseja transferir");
 					cpfT = ler.next();
+					cpfT = UsuarioRepositorio.exibirUser(cpfT).getCpf();
+//				saldoT = UsuarioRepositorio.exibirUser(cpfT).getSaldo();
 					System.out.println("Insira o valor");
 					try {
 						valor = ler.nextDouble();
-					} catch (InputMismatchException e) {
-						System.out.println("\nApenas números são necessários!");
-						continue;
+					} catch (InputMismatchException ex) {
+						System.out.println("Apenas números são permitidos!");
 					} finally {
-						ler.nextLine();
+						ler.nextDouble();
 					}
 					if (valor > saldo) {
 						System.out.println("Saldo Insuficiente\n" + saldo);
 						break;
 					} else {
 						System.out.println(cpfT + "\nDeseja confirmar transferencia? \n1-SIM \n2-NAO");
-						continuar = ler.nextInt();
+						try {
+							continuar = ler.nextInt();
+						} catch (InputMismatchException ex) {
+							System.out.println("Apenas números são permitidos!");
+						} finally {
+							ler.nextInt();
+						}
 						switch (continuar) {
 						case 1:
 
@@ -191,17 +205,18 @@ public class MenuContas {
 						}
 					}
 					saldo = saldo - valor;
+					saldoT = saldoT + valor;
 					System.out.println("Transferencia realizada \n" + saldo);
 					break;
 				} while (continuar == 2);
+				trans = trans + 1;
 				break;
 			case 5:
 				System.out.println("Insira o tempo em meses");
 				try {
-				tempo = ler.nextInt();
-				} catch (InputMismatchException e) {
-					System.out.println("\nApenas números são necessários!");
-					continue;
+					tempo = ler.nextInt();
+				} catch (InputMismatchException ex) {
+					System.out.println("Apenas números são permitidos!");
 				} finally {
 					ler.nextInt();
 				}

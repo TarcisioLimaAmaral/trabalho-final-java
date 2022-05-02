@@ -3,7 +3,6 @@ package menus;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-
 public class MenuGerente {
 
 	protected int tipo, opcao, continuar, tempo;
@@ -13,15 +12,14 @@ public class MenuGerente {
 
 	Scanner ler = new Scanner(System.in);
 
-	public void gerenteCorrente()  {
+	public void gerenteCorrente() {
 		do {
 			System.out.println(
 					"Selecione uma opcao abaixo: \n1-Depositar \n2-Sacar \n3-Saldo \n4-Transferir \n5-Exibir Impostos \n6-Relatorio contas totais");
 			try {
-			opcao = ler.nextInt();
-			} catch (InputMismatchException e) {
-				System.out.println("\nApenas números são necessários!");
-				continue;
+				opcao = ler.nextInt();
+			} catch (InputMismatchException ex) {
+				System.out.println("Apenas números são permitidos!");
 			} finally {
 				ler.nextInt();
 			}
@@ -31,9 +29,8 @@ public class MenuGerente {
 				System.out.println("Quanto deseja depositar?");
 				try {
 					valor = ler.nextDouble();
-				} catch (InputMismatchException e) {
-					System.out.println("\nApenas números são necessários!");
-					continue;
+				} catch (InputMismatchException ex) {
+					System.out.println("Apenas números são permitidos!");
 				} finally {
 					ler.nextDouble();
 				}
@@ -46,9 +43,8 @@ public class MenuGerente {
 				System.out.println("Quanto deseja sacar?");
 				try {
 					valor = ler.nextDouble();
-				} catch (InputMismatchException e) {
-					System.out.println("\nApenas números são necessários!");
-					continue;
+				} catch (InputMismatchException ex) {
+					System.out.println("Apenas números são permitidos!");
 				} finally {
 					ler.nextDouble();
 				}
@@ -70,10 +66,9 @@ public class MenuGerente {
 					cpfT = ler.next();
 					System.out.println("Insira o valor");
 					try {
-					valor = ler.nextDouble();
-					} catch (InputMismatchException e) {
-						System.out.println("\nApenas números são necessários!");
-						continue;
+						valor = ler.nextDouble();
+					} catch (InputMismatchException ex) {
+						System.out.println("Apenas números são permitidos!");
 					} finally {
 						ler.nextDouble();
 					}
@@ -82,7 +77,13 @@ public class MenuGerente {
 						break;
 					} else {
 						System.out.println(cpfT + "\nDeseja confirmar transferencia? \n1-SIM \n2-NAO");
-						continuar = ler.nextInt();
+						try {
+							continuar = ler.nextInt();
+						} catch (InputMismatchException ex) {
+							System.out.println("Apenas números são permitidos!");
+						} finally {
+							ler.nextInt();
+						}
 						switch (continuar) {
 						case 1:
 
@@ -117,13 +118,12 @@ public class MenuGerente {
 
 	public void gerentePoupanca() {
 		do {
-			System.out.println(
-					"Selecione uma opcao abaixo: \n1-Depositar \n2-Sacar \n3-Saldo \n4-Transferir \n5-Simular Rendimento \n6-Relatorio contas totais");
+			System.out.println
+			("Selecione uma opcao abaixo: \n1-Depositar \n2-Sacar \n3-Saldo \n4-Transferir \n5-Simular Rendimento \n6-Relatorio contas totais");
 			try {
-			opcao = ler.nextInt();
-			} catch (InputMismatchException e) {
-				System.out.println("\nApenas números são necessários!");
-				continue;
+				opcao = ler.nextInt();
+			} catch (InputMismatchException ex) {
+				System.out.println("Apenas números são permitidos!");
 			} finally {
 				ler.nextInt();
 			}
@@ -132,10 +132,9 @@ public class MenuGerente {
 			case 1:
 				System.out.println("Quanto deseja depositar?");
 				try {
-				valor = ler.nextDouble();
-				} catch (InputMismatchException e) {
-					System.out.println("\nApenas números são necessários!");
-					continue;
+					valor = ler.nextDouble();
+				} catch (InputMismatchException ex) {
+					System.out.println("Apenas números são permitidos!");
 				} finally {
 					ler.nextDouble();
 				}
@@ -144,14 +143,7 @@ public class MenuGerente {
 				break;
 			case 2:
 				System.out.println("Quanto deseja sacar?");
-				try {
 				valor = ler.nextDouble();
-				} catch (InputMismatchException e) {
-					System.out.println("\nApenas números são necessários!");
-					continue;
-				} finally {
-					ler.nextDouble();
-				}
 				if (valor > saldo) {
 					System.out.println("Saldo Insuficiente\n" + saldo);
 					break;
@@ -166,12 +158,11 @@ public class MenuGerente {
 				do {
 					System.out.println("Insira o cpf de quem deseja transferir");
 					cpfT = ler.next();
-					try {
 					System.out.println("Insira o valor");
-					valor = ler.nextDouble();
-					} catch (InputMismatchException e) {
-						System.out.println("\nApenas números são necessários!");
-						continue;
+					try {
+						valor = ler.nextDouble();
+					} catch (InputMismatchException ex) {
+						System.out.println("Apenas números são permitidos!");
 					} finally {
 						ler.nextDouble();
 					}
@@ -181,10 +172,9 @@ public class MenuGerente {
 					} else {
 						System.out.println(cpfT + "\nDeseja confirmar transferencia? \n1-SIM \n2-NAO");
 						try {
-						continuar = ler.nextInt();
-						} catch (InputMismatchException e) {
-							System.out.println("\nApenas números são necessários!");
-							continue;
+							continuar = ler.nextInt();
+						} catch (InputMismatchException ex) {
+							System.out.println("Apenas números são permitidos!");
 						} finally {
 							ler.nextInt();
 						}
@@ -208,13 +198,12 @@ public class MenuGerente {
 			case 5:
 				System.out.println("Insira o tempo em meses");
 				try {
-				tempo = ler.nextInt();
-				} catch (InputMismatchException e) {
-					System.out.println("\nApenas números são necessários!");
-					continue;
+					tempo = ler.nextInt();
+				} catch (InputMismatchException ex) {
+					System.out.println("Apenas números são permitidos!");
 				} finally {
 					ler.nextInt();
-				}	
+				}
 				saldo = valor;
 				for (int i = 0; i < tempo; i++) {
 					valor = valor + (valor * 0.01);
