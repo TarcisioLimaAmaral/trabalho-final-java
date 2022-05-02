@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class MenuContas {
 	
 	protected int tipo, opcao, continuar, tempo;
+	public static int dep=0, saq=0, trans=0;
 	protected double saldo, saldoT, valor, Imposto, ImpostoSaque = 0.10, ImpostoDeposito = 0.10,
 			ImpostoTransferencia = 0.20;
 	protected String login, cpfT;
@@ -24,6 +25,7 @@ public class MenuContas {
 				Imposto = Imposto + ImpostoDeposito;
 				saldo = saldo - ImpostoDeposito;
 				Math.ceil(saldo = saldo + valor);
+				dep = dep + 1;
 				System.out.println("Saldo atual: " + saldo);
 				break;
 			case 2:
@@ -36,6 +38,7 @@ public class MenuContas {
 				Imposto = Imposto + ImpostoSaque;
 				Math.ceil(saldo = saldo - ImpostoSaque);
 				saldo = saldo - valor;
+				saq = saq + 1;
 				System.out.println("Saldo atual: " + saldo);
 				break;
 			case 3:
@@ -71,6 +74,7 @@ public class MenuContas {
 					System.out.println("Transferencia realizada \n" + saldo);
 					break;
 				} while (continuar == 2);
+				trans = trans + 1;
 				break;
 			case 5:
 				System.out.println(Math.ceil(Imposto));
@@ -95,6 +99,7 @@ public class MenuContas {
 			valor = ler.nextDouble();
 			Math.ceil(saldo = saldo + valor);
 			System.out.println("Saldo atual: " + saldo);
+			dep = dep + 1;
 			break;
 		case 2:
 			System.out.println("Quanto deseja sacar?");
@@ -105,6 +110,7 @@ public class MenuContas {
 			}
 			saldo = saldo - valor;
 			System.out.println("Saldo atual: " + saldo);
+			saq = saq + 1;
 			break;
 		case 3:
 			System.out.println(saldo);
@@ -137,6 +143,7 @@ public class MenuContas {
 				System.out.println("Transferencia realizada \n" + saldo);
 				break;
 			} while (continuar == 2);
+			trans = trans + 1;
 			break;
 		case 5:
 			System.out.println("Insira o tempo em meses");

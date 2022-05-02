@@ -1,6 +1,9 @@
 package repositorios;
 
 import java.io.BufferedReader;
+
+import menus.MenuContas;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -28,13 +31,7 @@ public class UsuarioRepositorio {
 	File arquivosTexto = new File("src" + s + "arquivosTexto");
 	File arquivosP = new File(arquivosTexto.getPath() + s + "usuarios.txt");
 	
-	
-	
-	public static User exibirUser(String cpf) {
-			return mapaUsuarios.get(cpf);
-	}
-	
-	public void relatorio() {
+	public static void relatorio() {
 		try {
 			File relatorio = new File ("relatorio.txt");
 			relatorio.createNewFile();
@@ -42,10 +39,13 @@ public class UsuarioRepositorio {
 			FileWriter relatorioW = new FileWriter(relatorio, true);
 			BufferedWriter relatorioBffArquivo = new BufferedWriter(relatorioW);
 			
-			relatorioBffArquivo.write("ola ");
-
+			relatorioBffArquivo.write("Quantidade de Depositos: " + MenuContas.dep);
 			relatorioBffArquivo.newLine();
-			relatorioBffArquivo.write("ola 2");
+			relatorioBffArquivo.write("Quantidade de Saques: " + MenuContas.saq);
+			relatorioBffArquivo.newLine();
+			relatorioBffArquivo.write("Quantidade de Transferencias: " + MenuContas.trans);
+			relatorioBffArquivo.newLine();
+			relatorioBffArquivo.write("---------------------------------");
 			relatorioBffArquivo.newLine();
 			
 			relatorioBffArquivo.flush();
@@ -58,7 +58,7 @@ public class UsuarioRepositorio {
 	
 	public static void mostraDadosConta(String contaString) {
 		String[] contaVetor = contaString.split("/");
-
+		
 //		System.out.println("Cargo: " + contaVetor[0]);
 //		System.out.println("Tipo de conta: " + contaVetor[1]);
 		System.out.println("CPF: " + contaVetor[2]);
@@ -66,6 +66,7 @@ public class UsuarioRepositorio {
 		System.out.println("Nome: " + contaVetor[4]);
 //		System.out.println("Agencia: " + contaVetor[5]);
 		System.out.println("Saldo Atual: " + contaVetor[6]);
+		
 	}
 	
 	public static void lerUser() { 
@@ -90,4 +91,9 @@ public class UsuarioRepositorio {
 		}
 
 	}
+	
+	public static User exibirUser(String cpf) {
+			return mapaUsuarios.get(cpf);
+	}
+	
 }
