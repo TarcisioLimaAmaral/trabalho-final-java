@@ -11,8 +11,6 @@ public class SistemaInterno {
 
 	public static void main(String[] args) {
 
-		int tipo = 0;
-
 		MenuPrincipal m = new MenuPrincipal();
 		MenuContas mc = new MenuContas();
 		MenuGerente mg = new MenuGerente();
