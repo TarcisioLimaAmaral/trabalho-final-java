@@ -34,8 +34,6 @@ public class MenuContas {
 					valor = ler.nextDouble();
 				} catch (InputMismatchException ex) {
 					System.out.println("Apenas números são permitidos!");
-				} finally {
-					ler.nextDouble();
 				}
 				Imposto = Imposto + ImpostoDeposito;
 				saldo = saldo - ImpostoDeposito;
@@ -49,8 +47,6 @@ public class MenuContas {
 					valor = ler.nextDouble();
 				} catch (InputMismatchException ex) {
 					System.out.println("Apenas números são permitidos!");
-				} finally {
-					ler.nextDouble();
 				}
 				if (valor > saldo) {
 					System.out.println("Saldo Insuficiente\n" + saldo);
@@ -74,8 +70,6 @@ public class MenuContas {
 						valor = ler.nextDouble();
 					} catch (InputMismatchException ex) {
 						System.out.println("Apenas números são permitidos!");
-					} finally {
-						ler.nextDouble();
 					}
 					if (valor > saldo) {
 						System.out.println("Saldo Insuficiente\n" + saldo);
@@ -86,8 +80,6 @@ public class MenuContas {
 							continuar = ler.nextInt();
 						} catch (InputMismatchException ex) {
 							System.out.println("Apenas números são permitidos!");
-						} finally {
-							ler.nextInt();
 						}
 						switch (continuar) {
 						case 1:
@@ -128,8 +120,6 @@ public class MenuContas {
 				opcao = ler.nextInt();
 			} catch (InputMismatchException ex) {
 				System.out.println("Apenas números são permitidos!");
-			} finally {
-				ler.nextInt();
 			}
 			switch (opcao) {
 
@@ -139,9 +129,7 @@ public class MenuContas {
 					valor = ler.nextDouble();
 				} catch (InputMismatchException ex) {
 					System.out.println("Apenas números são permitidos!");
-				} finally {
-					ler.nextDouble();
-				}
+				} 
 				Math.ceil(saldo = saldo + valor);
 				System.out.println("Saldo atual: " + saldo);
 				dep = dep + 1;
@@ -152,8 +140,6 @@ public class MenuContas {
 					valor = ler.nextDouble();
 				} catch (InputMismatchException ex) {
 					System.out.println("Apenas números são permitidos!");
-				} finally {
-					ler.nextDouble();
 				}
 				if (valor > saldo) {
 					System.out.println("Saldo Insuficiente\n" + saldo);
@@ -170,16 +156,14 @@ public class MenuContas {
 				do {
 					System.out.println("Insira o cpf de quem deseja transferir");
 					cpfT = ler.next();
-					cpfT = UsuarioRepositorio.exibirUser(cpfT).getCpf();
+//					cpfT = UsuarioRepositorio.exibirUser(cpfT).getCpf();
 //				saldoT = UsuarioRepositorio.exibirUser(cpfT).getSaldo();
 					System.out.println("Insira o valor");
 					try {
 						valor = ler.nextDouble();
 					} catch (InputMismatchException ex) {
 						System.out.println("Apenas números são permitidos!");
-					} finally {
-						ler.nextDouble();
-					}
+					} 
 					if (valor > saldo) {
 						System.out.println("Saldo Insuficiente\n" + saldo);
 						break;
@@ -189,8 +173,6 @@ public class MenuContas {
 							continuar = ler.nextInt();
 						} catch (InputMismatchException ex) {
 							System.out.println("Apenas números são permitidos!");
-						} finally {
-							ler.nextInt();
 						}
 						switch (continuar) {
 						case 1:
@@ -217,9 +199,7 @@ public class MenuContas {
 					tempo = ler.nextInt();
 				} catch (InputMismatchException ex) {
 					System.out.println("Apenas números são permitidos!");
-				} finally {
-					ler.nextInt();
-				}
+				} 
 				saldo = valor;
 				for (int i = 0; i < tempo; i++) {
 					valor = valor + (valor * 0.01);

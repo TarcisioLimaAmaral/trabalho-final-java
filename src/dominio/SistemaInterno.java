@@ -22,8 +22,6 @@ public class SistemaInterno {
 		UsuarioRepositorio ur = new UsuarioRepositorio();
 		
 		Scanner ler = new Scanner(System.in);
-
-		ur.lerUser();
 		
 		m.menu1();
 		

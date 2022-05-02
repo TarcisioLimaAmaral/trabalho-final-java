@@ -33,8 +33,6 @@ public class MenuPrincipal {
 				continuar = ler.nextInt();
 			} catch (InputMismatchException ex) {
 				System.out.println("Apenas números são permitidos!");
-			} finally {
-				ler.nextInt();
 			}
 			if (continuar == 1) {
 				break;
@@ -53,11 +51,10 @@ public class MenuPrincipal {
 			System.out.println("Selecione a sua conta \n1 - Poupanca \n2 - Corrente");
 			try {
 				tipo = ler.nextInt();
+				break;
 			} catch (InputMismatchException ex) {
 				System.out.println("Apenas números são permitidos!");
-			} finally {
-				ler.nextInt();
-			}
+			} 
 			switch (tipo) {
 
 			case 1:
