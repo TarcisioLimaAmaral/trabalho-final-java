@@ -2,6 +2,8 @@ package menus;
 
 import java.util.Scanner;
 
+import repositorios.UsuarioRepositorio;
+
 public class MenuContas {
 	
 	protected int tipo, opcao, continuar, tempo;
@@ -119,6 +121,8 @@ public class MenuContas {
 			do {
 				System.out.println("Insira o cpf de quem deseja transferir");
 				cpfT = ler.next();
+				cpfT = UsuarioRepositorio.exibirUser(cpfT).getCpf();
+//				saldoT = UsuarioRepositorio.exibirUser(cpfT).getSaldo();
 				System.out.println("Insira o valor");
 				valor = ler.nextDouble();
 				if (valor > saldo) {
@@ -140,6 +144,7 @@ public class MenuContas {
 					}
 				}
 				saldo = saldo - valor;
+				saldoT = saldoT + valor;
 				System.out.println("Transferencia realizada \n" + saldo);
 				break;
 			} while (continuar == 2);
