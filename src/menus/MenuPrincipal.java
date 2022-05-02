@@ -22,7 +22,7 @@ public class MenuPrincipal {
 		senha = ler.nextLine();
 
 		System.out.println("\nBem-vindo, " + ur.exibirUser(login).getNome());
-		System.out.println("Seu saldo é de R$: " + ur.exibirUser(login).getSaldo() + ",00");
+		System.out.println("Seu saldo é de R$: " + ur.exibirUser(login).getSaldo());
 
 	}
 
