@@ -23,6 +23,8 @@ public class SistemaInterno {
 		
 		Scanner ler = new Scanner(System.in);
 
+		ur.lerUser();
+		
 		m.menu1();
 		
 		System.out.println("");

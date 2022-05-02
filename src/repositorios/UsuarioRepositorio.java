@@ -69,7 +69,7 @@ public class UsuarioRepositorio {
 		
 	}
 	
-	public static void lerUser() { 
+	public void lerUser() { 
 		File arquivo = new File("usuarios.txt");
 		
 		try {
@@ -81,7 +81,8 @@ public class UsuarioRepositorio {
 				if (linhaLidaAlt == null) {
 					break;
 				}
-				mostraDadosConta(linhaLidaAlt);
+//				mostraDadosConta(linhaLidaAlt);
+				mapaUsuarios.put(linhaLidaAlt, null);
 			} while(true);
 			
 		} catch (FileNotFoundException e) {
@@ -94,6 +95,11 @@ public class UsuarioRepositorio {
 	
 	public static User exibirUser(String cpf) {
 			return mapaUsuarios.get(cpf);
+	}
+	
+	public static String login(String contaString) {
+		String[] contaVetor = contaString.split("/");
+		return contaVetor[4];
 	}
 	
 }
