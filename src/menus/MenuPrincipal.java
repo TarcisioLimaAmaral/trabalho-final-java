@@ -1,5 +1,6 @@
 package menus;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import repositorios.UsuarioRepositorio;
@@ -8,26 +9,33 @@ public class MenuPrincipal {
 	protected static int tipo, opcao, continuar, tempo;
 	protected double saldo, saldoT, valor, Imposto, ImpostoSaque = 0.10, ImpostoDeposito = 0.10,
 			ImpostoTransferencia = 0.20;
-	protected String login, cpfT;
+	protected String login, cpfT, senha;
 
 	Scanner ler = new Scanner(System.in);
-	
+
 	UsuarioRepositorio ur = new UsuarioRepositorio();
 
 	public void menu1() {
-		System.out.println("Insira seu cpf");
+		System.out.println("Insira seu cpf:");
 		login = ler.nextLine();
-		
-		System.out.println("Bem-vindo " + ur.exibirUser(login).getNome());
+		System.out.println("Insira sua senha:");
+		senha = ler.nextLine();
+
+		System.out.println("\nBem-vindo, " + ur.exibirUser(login).getNome());
+		System.out.println("Seu saldo é de R$: " + ur.exibirUser(login).getSaldo() + ",00");
 
 	}
-	
-	
+
 	public void DesejaContinuar() {
 		do {
 			System.out.println("Deseja realizar outra operacao? \n1- SIM \n2- SAIR");
-			continuar = ler.nextInt();
-
+			try {
+				continuar = ler.nextInt();
+			} catch (InputMismatchException ex) {
+				System.out.println("Apenas números são permitidos!");
+			} finally {
+				ler.nextInt();
+			}
 			if (continuar == 1) {
 				break;
 			} else if (continuar == 2) {
@@ -39,12 +47,17 @@ public class MenuPrincipal {
 			}
 		} while (continuar == 1);
 	}
-	
-	public void tipoConta() {
+
+	public void tipoConta() throws InputMismatchException {
 		do {
 			System.out.println("Selecione a sua conta \n1 - Poupanca \n2 - Corrente");
-			tipo = ler.nextInt();
-
+			try {
+				tipo = ler.nextInt();
+			} catch (InputMismatchException ex) {
+				System.out.println("Apenas números são permitidos!");
+			} finally {
+				ler.nextInt();
+			}
 			switch (tipo) {
 
 			case 1:
