@@ -15,6 +15,7 @@ public class MenuPrincipal {
 
 	UsuarioRepositorio ur = new UsuarioRepositorio();
 
+	// Aqui seria interessante ter um if para verificar se a senha inserida pelo usuário é a correta
 	public void menu1() {
 		System.out.println("Insira seu cpf:");
 		login = ler.nextLine();
@@ -52,7 +53,9 @@ public class MenuPrincipal {
 			try {
 				tipo = ler.nextInt();
 				break;
-			} catch (InputMismatchException ex) {
+			}
+			// Se eu coloco uma letra, aqui fica com loop infinito, seria bom ter um leitor.nextLine() para limpar o buffer
+			catch (InputMismatchException ex) {
 				System.out.println("Apenas números são permitidos!");
 			} 
 			switch (tipo) {
