@@ -24,6 +24,7 @@ public class MenuContas {
 			} catch (InputMismatchException ex) {
 				System.out.println("Apenas números são permitidos!");
 			} finally {
+				// Aqui teria que ser nextLine()
 				ler.nextInt();
 			}
 			switch (opcao) {
